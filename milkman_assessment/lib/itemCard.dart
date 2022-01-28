@@ -64,7 +64,7 @@ class _ItemCardState extends State<ItemCard> {
             ),
           ),
           ClipRRect(
-            borderRadius: BorderRadius.circular(18.0),
+            borderRadius: BorderRadius.circular(20.0),
             child: Image.asset(
               "images/food2.jpeg",
               height: 140,
