@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:milkman_assessment/checkoutPage.dart';
 import 'package:milkman_assessment/helpers/colorConstants.dart';
 import 'package:milkman_assessment/helpers/styleConstants.dart';
 import 'package:milkman_assessment/itemCard.dart';
@@ -161,7 +162,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                     color: ColorConstants.appBackgroundColor, fontSize: 22),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CheckOut()),
+              );
+            },
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
