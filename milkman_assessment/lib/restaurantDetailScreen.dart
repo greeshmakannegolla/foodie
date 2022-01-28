@@ -142,6 +142,29 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
               ),
             ),
           ),
+          floatingActionButton: TextButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.red),
+                fixedSize: MaterialStateProperty.all(
+                    Size(MediaQuery.of(context).size.width * 0.65, 50)),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                )),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 18.0, vertical: 3),
+              child: Text(
+                "Checkout",
+                style: kHeader.copyWith(
+                    color: ColorConstants.appBackgroundColor, fontSize: 22),
+              ),
+            ),
+            onPressed: () {},
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
         )));
   }
 }
