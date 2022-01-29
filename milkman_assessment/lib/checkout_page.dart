@@ -296,7 +296,9 @@ class _CheckOutState extends State<CheckOut> {
           style: kData,
         ),
         Spacer(),
-        IncrementDecrement(),
+        IncrementDecrement(
+          onChanged: (ba) {},
+        ),
         Text(
           "₹300", //TODO:Need to increment counter
           style: kData,

@@ -15,7 +15,8 @@ class ItemCard extends StatefulWidget {
 class _ItemCardState extends State<ItemCard> {
   late MenuItemMock _item;
 
-  bool _isAddPressed = false;
+  int _itemQuantity = 0;
+
   @override
   void initState() {
     super.initState();
@@ -86,12 +87,11 @@ class _ItemCardState extends State<ItemCard> {
                       fit: BoxFit.fill,
                     ),
                   ),
-                  (_isAddPressed == false)
+                  (_itemQuantity == 0)
                       ? OutlinedButton(
                           onPressed: () {
                             setState(() {
-                              _isAddPressed = true;
-                              IncrementDecrement();
+                              _itemQuantity = 1;
                             });
                           },
                           style: ButtonStyle(
@@ -105,7 +105,9 @@ class _ItemCardState extends State<ItemCard> {
                                 color: ColorConstants.appPrimaryColor,
                                 fontSize: 20),
                           ))
-                      : IncrementDecrement(),
+                      : IncrementDecrement(
+                          initialValue: _itemQuantity,
+                          onChanged: _itemQuantityUpdated),
                 ],
               )
             ],
@@ -120,5 +122,10 @@ class _ItemCardState extends State<ItemCard> {
         ],
       ),
     );
+  }
+
+  _itemQuantityUpdated(int newValue) {
+    _itemQuantity = newValue;
+    setState(() {});
   }
 }

@@ -3,7 +3,12 @@ import 'package:milkman_assessment/helpers/color_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
 
 class IncrementDecrement extends StatefulWidget {
-  const IncrementDecrement({Key? key}) : super(key: key);
+  const IncrementDecrement(
+      {this.initialValue = 0, required this.onChanged, Key? key})
+      : super(key: key);
+
+  final int initialValue;
+  final Function(int) onChanged;
 
   @override
   _IncrementDecrementState createState() => _IncrementDecrementState();
@@ -11,6 +16,13 @@ class IncrementDecrement extends StatefulWidget {
 
 class _IncrementDecrementState extends State<IncrementDecrement> {
   int _itemCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _itemCount = widget.initialValue;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,6 +35,7 @@ class _IncrementDecrementState extends State<IncrementDecrement> {
           onPressed: () => setState(() {
             if (_itemCount != 0) {
               _itemCount--;
+              widget.onChanged(_itemCount);
             }
           }),
         ),
@@ -38,7 +51,10 @@ class _IncrementDecrementState extends State<IncrementDecrement> {
               Icons.add_rounded,
               color: ColorConstants.textPrimaryColor.withOpacity(0.9),
             ),
-            onPressed: () => setState(() => _itemCount++))
+            onPressed: () => setState(() {
+                  _itemCount++;
+                  widget.onChanged(_itemCount);
+                }))
       ],
     );
   }
