@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:milkman_assessment/helpers/color_constants.dart';
+import 'package:milkman_assessment/helpers/string_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/helpers/increment_decrement_widget.dart';
 
@@ -183,8 +184,10 @@ class _CheckOutState extends State<CheckOut> {
                                     _promoController.clear();
                                     setState(() {});
                                   },
-                                  child: Text("Remove",
-                                      style: TextStyle(color: Colors.orange)),
+                                  child: Text(remove,
+                                      style: TextStyle(
+                                          color: ColorConstants
+                                              .actionButtonColor)),
                                 ),
                               ],
                             ),
@@ -217,14 +220,13 @@ class _CheckOutState extends State<CheckOut> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Tip your hunger saviour",
+          tipHeader,
           style: kData,
         ),
         SizedBox(
           height: 8,
         ),
-        Text(
-            "Thank your delivery partner by leaving them a tip. 100% of the tip will go to your delivery partner.",
+        Text(tipContent,
             style: kData.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
@@ -251,17 +253,18 @@ class _CheckOutState extends State<CheckOut> {
               width: 5,
             ),
             Text(
-              "Delivery instructions",
+              deliveryHeader,
               style: kData,
             ),
             Spacer(),
-            Text("CHANGE", style: TextStyle(color: Colors.orange))
+            Text(change,
+                style: TextStyle(color: ColorConstants.actionButtonColor))
           ],
         ),
         SizedBox(
           height: 8,
         ),
-        Text("Contactless delivery - Leave at door",
+        Text(deliveryContent,
             style: kData.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
@@ -281,7 +284,7 @@ class _CheckOutState extends State<CheckOut> {
     return Row(
       children: [
         Image.asset(
-          "images/veg.png",
+          vegIcon,
           height: 25,
           width: 25,
         ),
@@ -308,7 +311,7 @@ class _CheckOutState extends State<CheckOut> {
         ClipRRect(
           borderRadius: BorderRadius.circular(14.0),
           child: Image.asset(
-            "images/food3.jpeg",
+            food3,
             height: 65,
             width: 65,
             fit: BoxFit.fill,

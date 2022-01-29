@@ -1,3 +1,5 @@
+import 'package:milkman_assessment/helpers/string_constants.dart';
+
 class RestaurantMock {
   String get name => _name;
 
@@ -44,13 +46,13 @@ List<RestaurantMock> getRestaurantList() {
         300,
         "Closes in 25 mins",
         true,
-        "images/food2.jpeg",
+        food2,
         [
           MenuItemMock(
               "Veg Biryani",
               309,
               "Made with indian spices, fresh veggies and lots of love",
-              "images/food2.jpeg",
+              food2,
               true),
           MenuItemMock(
               "Veg Thali",
@@ -62,7 +64,7 @@ List<RestaurantMock> getRestaurantList() {
               "Chicken Biryani",
               429,
               "Made with indian spices, chicken and lots of love",
-              "images/food2.jpeg",
+              food2,
               false),
           MenuItemMock("Cheese Loaded Burger", 99,
               "Loaded with veggies and cheese", "images/food7.jpeg", true),
@@ -96,12 +98,8 @@ List<RestaurantMock> getRestaurantList() {
               "Loaded with veggies and cheese", "images/food7.jpeg", true),
           MenuItemMock("Mixed Veg Curry", 399,
               "With the goodness of vegetables", "images/food5.jpeg", true),
-          MenuItemMock(
-              "Chole Bhatura",
-              199,
-              "2 bhature served with spicy chole curry",
-              "images/food1.jpeg",
-              true),
+          MenuItemMock("Chole Bhatura", 199,
+              "2 bhature served with spicy chole curry", food1, true),
         ],
         "Plot No. 310 B (First Floor), Road No - 25, Venkatagiri, Jubilee Hills"),
     RestaurantMock(

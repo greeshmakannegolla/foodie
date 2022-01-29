@@ -8,4 +8,5 @@ class ColorConstants {
   static const secondaryTextColor = Color(0xFF657381);
   static const ratingColor = Colors.green;
   static const appBackgroundColor = Colors.white;
+  static const actionButtonColor = Colors.orange;
 }
