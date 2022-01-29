@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
 import 'package:milkman_assessment/helpers/color_constants.dart';
+import 'package:milkman_assessment/helpers/string_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/helpers/increment_decrement_widget.dart';
 
@@ -41,7 +42,7 @@ class _ItemCardState extends State<ItemCard> {
                   children: [
                     _item.isVeg
                         ? Image.asset(
-                            "images/veg.png",
+                            vegIcon,
                             height: 20,
                             width: 25,
                           )
@@ -84,7 +85,7 @@ class _ItemCardState extends State<ItemCard> {
                       _item.imagePath,
                       height: 140,
                       width: 140,
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   (_itemQuantity == 0)
