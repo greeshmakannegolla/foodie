@@ -145,21 +145,36 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
           ),
           floatingActionButton: TextButton(
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.red),
+                backgroundColor: MaterialStateProperty.all(Colors.redAccent),
                 fixedSize: MaterialStateProperty.all(
-                    Size(MediaQuery.of(context).size.width * 0.65, 50)),
+                    Size(MediaQuery.of(context).size.width * 0.95, 55)),
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 )),
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 18.0, vertical: 3),
-              child: Text(
-                "Checkout",
-                style: kHeader.copyWith(
-                    color: ColorConstants.appBackgroundColor, fontSize: 22),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    Icons.shopping_cart_rounded,
+                    color: ColorConstants.appBackgroundColor,
+                  ),
+                  Text(
+                    "Proceed to cart",
+                    style: kHeader.copyWith(
+                        color: ColorConstants.appBackgroundColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  Icon(
+                    Icons.chevron_right_rounded,
+                    color: ColorConstants.appBackgroundColor,
+                  ),
+                ],
               ),
             ),
             onPressed: () {

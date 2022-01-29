@@ -14,3 +14,10 @@ const kSecondaryHeader = TextStyle(
   color: ColorConstants.textPrimaryColor,
   fontSize: 15,
 );
+
+const kData = TextStyle(
+  fontFamily: "Sen",
+  fontWeight: FontWeight.w600,
+  color: ColorConstants.textPrimaryColor,
+  fontSize: 16.5,
+);
