@@ -4,6 +4,8 @@ import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
 import 'package:milkman_assessment/helpers/color_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/item_card.dart';
+import 'package:milkman_assessment/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class RestaurantDetailScreen extends StatefulWidget {
   final RestaurantMock restaurantData;
@@ -146,7 +148,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 10, horizontal: 12),
-                        child: ItemCard(_restaurantData.items[index]),
+                        child: ItemCard(
+                          _restaurantData.items[index],
+                          key: UniqueKey(),
+                        ),
                       );
                     },
                   )
@@ -175,7 +180,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                     color: ColorConstants.appBackgroundColor,
                   ),
                   Text(
-                    "Proceed to cart",
+                    "Proceed with"
+                    " ${context.watch<CartProvider>().getCart.getCartTotalQuantity()}"
+                    " items",
                     style: kHeader.copyWith(
                         color: ColorConstants.appBackgroundColor,
                         fontSize: 16,
@@ -188,11 +195,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                 ],
               ),
             ),
-            onPressed: () {
-              Navigator.push(
+            onPressed: () async {
+              await Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => CheckOut()),
               );
+              setState(() {});
             },
           ),
           floatingActionButtonLocation:

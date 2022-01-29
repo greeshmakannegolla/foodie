@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
 import 'package:milkman_assessment/helpers/color_constants.dart';
+import 'package:milkman_assessment/helpers/increment_decrement_widget.dart';
 import 'package:milkman_assessment/helpers/string_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
-import 'package:milkman_assessment/helpers/increment_decrement_widget.dart';
+import 'package:milkman_assessment/models/cart_model.dart';
+import 'package:milkman_assessment/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class ItemCard extends StatefulWidget {
   final MenuItemMock item;
@@ -26,6 +29,9 @@ class _ItemCardState extends State<ItemCard> {
 
   @override
   Widget build(BuildContext context) {
+    _itemQuantity =
+        context.watch<CartProvider>().getCart.getItemQuantity(_item);
+
     return Card(
       elevation: 0,
       child: Column(
@@ -91,9 +97,9 @@ class _ItemCardState extends State<ItemCard> {
                   (_itemQuantity == 0)
                       ? OutlinedButton(
                           onPressed: () {
-                            setState(() {
-                              _itemQuantity = 1;
-                            });
+                            context
+                                .read<CartProvider>()
+                                .updateCart(CartItem(_item, 1));
                           },
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
@@ -126,7 +132,9 @@ class _ItemCardState extends State<ItemCard> {
   }
 
   _itemQuantityUpdated(int newValue) {
-    _itemQuantity = newValue;
+    var cartProvider = context.read<CartProvider>();
+    cartProvider.updateCart(CartItem(_item, newValue));
+
     setState(() {});
   }
 }

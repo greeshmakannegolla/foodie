@@ -3,6 +3,9 @@ import 'package:milkman_assessment/helpers/color_constants.dart';
 import 'package:milkman_assessment/helpers/string_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/helpers/increment_decrement_widget.dart';
+import 'package:milkman_assessment/models/cart_model.dart';
+import 'package:milkman_assessment/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class CheckOut extends StatefulWidget {
   const CheckOut({Key? key}) : super(key: key);
@@ -29,6 +32,8 @@ class _CheckOutState extends State<CheckOut> {
 
   @override
   Widget build(BuildContext context) {
+    var cart = context.watch<CartProvider>().getCart;
+
     return GestureDetector(
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
@@ -53,12 +58,24 @@ class _CheckOutState extends State<CheckOut> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 18.0, vertical: 3),
-                    child: Text(
-                      "MAKE PAYMENT", //TODO: Show total amount
-                      style: kHeader.copyWith(
-                        color: ColorConstants.appBackgroundColor,
-                        fontSize: 16,
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "₹" "${cart.getCartTotal()}",
+                          style: kHeader.copyWith(
+                            color: ColorConstants.appBackgroundColor,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          "MAKE PAYMENT",
+                          style: kHeader.copyWith(
+                            color: ColorConstants.appBackgroundColor,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   onPressed: () async {
@@ -109,7 +126,19 @@ class _CheckOutState extends State<CheckOut> {
                         SizedBox(
                           height: 30,
                         ),
-                        _getItemListTile(), //TODO: Has to be a ListView
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: ClampingScrollPhysics(),
+                          itemCount: cart.cartItems.length,
+                          itemBuilder: (BuildContext ctx, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 12),
+                              child: _getItemListTile(
+                                  cart.cartItems[index], context),
+                            );
+                          },
+                        ),
                         SizedBox(
                           height: 20,
                         ),
@@ -256,9 +285,6 @@ class _CheckOutState extends State<CheckOut> {
               deliveryHeader,
               style: kData,
             ),
-            Spacer(),
-            Text(change,
-                style: TextStyle(color: ColorConstants.actionButtonColor))
           ],
         ),
         SizedBox(
@@ -280,7 +306,7 @@ class _CheckOutState extends State<CheckOut> {
     );
   }
 
-  Row _getItemListTile() {
+  Row _getItemListTile(CartItem item, BuildContext context) {
     return Row(
       children: [
         Image.asset(
@@ -292,15 +318,19 @@ class _CheckOutState extends State<CheckOut> {
           width: 8,
         ),
         Text(
-          "Veg Biryani",
+          item.menuItem.name,
           style: kData,
         ),
         Spacer(),
         IncrementDecrement(
-          onChanged: (ba) {},
+          initialValue: item.quantity,
+          onChanged: (newValue) {
+            item.quantity = newValue;
+            context.read<CartProvider>().updateCart(item);
+          },
         ),
         Text(
-          "₹300", //TODO:Need to increment counter
+          "₹" "${item.menuItem.price * item.quantity}",
           style: kData,
         )
       ],
