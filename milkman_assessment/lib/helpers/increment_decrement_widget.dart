@@ -29,7 +29,9 @@ class _IncrementDecrementState extends State<IncrementDecrement> {
         Text(
           _itemCount.toString(),
           style: kSecondaryHeader.copyWith(
-              color: ColorConstants.textPrimaryColor, fontSize: 18),
+              color: ColorConstants.textPrimaryColor,
+              fontSize: 16,
+              fontWeight: FontWeight.w600),
         ),
         IconButton(
             icon: Icon(

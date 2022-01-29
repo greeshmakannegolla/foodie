@@ -11,6 +11,21 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
+  late TextEditingController _promoController;
+
+  @override
+  void initState() {
+    super.initState();
+    _promoController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _promoController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -128,6 +143,7 @@ class _CheckOutState extends State<CheckOut> {
                               height: 8,
                             ),
                             TextField(
+                                controller: _promoController,
                                 onChanged: (newText) {},
                                 decoration: InputDecoration(
                                     suffix: InkWell(
@@ -157,7 +173,23 @@ class _CheckOutState extends State<CheckOut> {
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8))),
                             SizedBox(
-                              height: 35,
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    _promoController.clear();
+                                    setState(() {});
+                                  },
+                                  child: Text("Remove",
+                                      style: TextStyle(color: Colors.orange)),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 30,
                             ),
                             Divider(
                               color: ColorConstants.secondaryTextColor
