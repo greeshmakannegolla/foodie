@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
 import 'package:milkman_assessment/helpers/color_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/helpers/increment_decrement_widget.dart';
 
 class ItemCard extends StatefulWidget {
-  const ItemCard({Key? key}) : super(key: key);
+  final MenuItemMock item;
+  const ItemCard(this.item, {Key? key}) : super(key: key);
 
   @override
   _ItemCardState createState() => _ItemCardState();
 }
 
 class _ItemCardState extends State<ItemCard> {
+  late MenuItemMock _item;
+
   bool _isAddPressed = false;
+  @override
+  void initState() {
+    super.initState();
+    _item = widget.item;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -28,23 +38,25 @@ class _ItemCardState extends State<ItemCard> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      "images/veg.png",
-                      height: 20,
-                      width: 25,
-                    ),
+                    _item.isVeg
+                        ? Image.asset(
+                            "images/veg.png",
+                            height: 20,
+                            width: 25,
+                          )
+                        : Container(),
                     SizedBox(
                       height: 7,
                     ),
                     Text(
-                      "Veg Biryani",
+                      _item.name,
                       style: kHeader.copyWith(fontSize: 16),
                     ),
                     SizedBox(
                       height: 7,
                     ),
                     Text(
-                      "₹300",
+                      "₹" + _item.price.toString(),
                       style: kHeader.copyWith(
                           fontSize: 16,
                           color: ColorConstants.secondaryTextColor
@@ -54,8 +66,7 @@ class _ItemCardState extends State<ItemCard> {
                     SizedBox(
                       height: 7,
                     ),
-                    Text(
-                        "Made with indian spices, fresh veggies and lots of love",
+                    Text(_item.description,
                         style: kHeader.copyWith(
                             fontSize: 14,
                             color: ColorConstants.secondaryTextColor
@@ -69,7 +80,7 @@ class _ItemCardState extends State<ItemCard> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(14.0),
                     child: Image.asset(
-                      "images/food2.jpeg",
+                      _item.imagePath,
                       height: 140,
                       width: 140,
                       fit: BoxFit.fill,

@@ -19,7 +19,6 @@ class _RestaurantCardState extends State<RestaurantCard> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _restaurantData = widget.restaurantData;
   }

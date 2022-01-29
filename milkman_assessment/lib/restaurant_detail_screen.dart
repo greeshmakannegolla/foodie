@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:milkman_assessment/checkout_page.dart';
+import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
 import 'package:milkman_assessment/helpers/color_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/item_card.dart';
 
 class RestaurantDetailScreen extends StatefulWidget {
-  const RestaurantDetailScreen({Key? key}) : super(key: key);
+  final RestaurantMock restaurantData;
+  const RestaurantDetailScreen(this.restaurantData, {Key? key})
+      : super(key: key);
 
   @override
   _RestaurantDetailScreenState createState() => _RestaurantDetailScreenState();
 }
 
 class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
+  late RestaurantMock _restaurantData;
+  @override
+  void initState() {
+    super.initState();
+    _restaurantData = widget.restaurantData;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -70,7 +80,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Paradise", style: kHeader.copyWith(fontSize: 25)),
+                      Text(_restaurantData.name,
+                          style: kHeader.copyWith(fontSize: 25)),
                       ClipRRect(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8)),
@@ -83,7 +94,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                                 horizontal: 8.0, vertical: 3),
                             child: Row(children: [
                               Text(
-                                "3.5",
+                                _restaurantData.rating.toString(),
                                 style: kSecondaryHeader.copyWith(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 16,
@@ -106,14 +117,14 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   SizedBox(
                     height: 8,
                   ),
-                  Text("South Indian, Chinese",
+                  Text(_restaurantData.cuisine,
                       style: kSecondaryHeader.copyWith(
                           color: ColorConstants.textPrimaryColor
                               .withOpacity(0.9))),
                   SizedBox(
                     height: 7,
                   ),
-                  Text("Plot 49, Survey 261 to 266, Hyderabad",
+                  Text(_restaurantData.address,
                       style: kSecondaryHeader.copyWith(
                           color: ColorConstants.secondaryTextColor
                               .withOpacity(0.8))),
@@ -130,12 +141,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   ListView.builder(
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
-                    itemCount: 5,
+                    itemCount: _restaurantData.items.length,
                     itemBuilder: (BuildContext ctx, int index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 10, horizontal: 12),
-                        child: ItemCard(),
+                        child: ItemCard(_restaurantData.items[index]),
                       );
                     },
                   )

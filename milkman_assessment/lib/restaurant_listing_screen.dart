@@ -65,26 +65,27 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                       _buildChip('Rating:4+'),
                     ],
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => RestaurantDetailScreen()),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
+                    itemCount: _restaurantList.length,
+                    itemBuilder: (BuildContext ctx, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 12),
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        RestaurantDetailScreen(
+                                            _restaurantList[index])),
+                              );
+                            },
+                            child: RestaurantCard(_restaurantList[index])),
                       );
                     },
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: ClampingScrollPhysics(),
-                      itemCount: _restaurantList.length,
-                      itemBuilder: (BuildContext ctx, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 12),
-                          child: RestaurantCard(_restaurantList[index]),
-                        );
-                      },
-                    ),
                   ),
                 ],
               ),
