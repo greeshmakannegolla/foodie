@@ -1,17 +1,29 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:milkman_assessment/helpers/colorConstants.dart';
-import 'package:milkman_assessment/helpers/styleConstants.dart';
+import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
+import 'package:milkman_assessment/helpers/color_constants.dart';
+import 'package:milkman_assessment/helpers/style_constants.dart';
 
 class RestaurantCard extends StatefulWidget {
-  const RestaurantCard({Key? key}) : super(key: key);
+  const RestaurantCard(this.restaurantData, {Key? key}) : super(key: key);
+
+  final RestaurantMock restaurantData;
 
   @override
   _RestaurantCardState createState() => _RestaurantCardState();
 }
 
 class _RestaurantCardState extends State<RestaurantCard> {
+  late RestaurantMock _restaurantData;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _restaurantData = widget.restaurantData;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -30,8 +42,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
             child: SizedBox(
               height: 230,
               width: double.infinity,
-              child: Image.asset("images/food1.jpeg",
-                  fit: BoxFit.fill), //TODO:Get each restaurant's name
+              child: Image.asset(_restaurantData.imagePath, fit: BoxFit.fill),
             ),
           ),
           Padding(
@@ -52,7 +63,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(
-              "Paradise",
+              _restaurantData.name,
               style: kHeader,
             ),
             ClipRRect(
@@ -66,7 +77,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
                       const EdgeInsets.symmetric(horizontal: 5.0, vertical: 3),
                   child: Row(children: [
                     Text(
-                      "3.5",
+                      _restaurantData.rating.toString(),
                       style: kSecondaryHeader.copyWith(
                           fontWeight: FontWeight.w600,
                           fontSize: 13.5,
@@ -88,15 +99,16 @@ class _RestaurantCardState extends State<RestaurantCard> {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text("South Indian, Chinese", style: kSecondaryHeader),
-            Text("₹300 for one", style: kSecondaryHeader)
+          children: [
+            Text(_restaurantData.cuisine, style: kSecondaryHeader),
+            Text("₹${_restaurantData.priceForOne} for one",
+                style: kSecondaryHeader)
           ],
         ),
         SizedBox(
           height: 5.5,
         ),
-        Text("Closes in 25 mins",
+        Text(_restaurantData.closingTime,
             style: kSecondaryHeader.copyWith(
                 color: ColorConstants.appPrimaryColor)),
         SizedBox(

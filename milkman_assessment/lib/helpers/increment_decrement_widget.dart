@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:milkman_assessment/helpers/colorConstants.dart';
-import 'package:milkman_assessment/helpers/styleConstants.dart';
+import 'package:milkman_assessment/helpers/color_constants.dart';
+import 'package:milkman_assessment/helpers/style_constants.dart';
 
 class IncrementDecrement extends StatefulWidget {
   const IncrementDecrement({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:milkman_assessment/restaurantListingScreen.dart';
+import 'package:milkman_assessment/restaurant_listing_screen.dart';
 
 void main() {
   runApp(MaterialApp(

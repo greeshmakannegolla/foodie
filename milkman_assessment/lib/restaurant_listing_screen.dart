@@ -2,9 +2,10 @@
 // ignore_for_file: file_names, duplicate_ignore
 
 import 'package:flutter/material.dart';
-import 'package:milkman_assessment/helpers/colorConstants.dart';
-import 'package:milkman_assessment/restaurantCard.dart';
-import 'package:milkman_assessment/restaurantDetailScreen.dart';
+import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
+import 'package:milkman_assessment/helpers/color_constants.dart';
+import 'package:milkman_assessment/restaurant_card.dart';
+import 'package:milkman_assessment/restaurant_detail_screen.dart';
 
 class RestaurantListingScreen extends StatefulWidget {
   const RestaurantListingScreen({Key? key}) : super(key: key);
@@ -15,6 +16,14 @@ class RestaurantListingScreen extends StatefulWidget {
 }
 
 class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
+  List<RestaurantMock> _restaurantList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _restaurantList = getRestaurantList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -67,12 +76,12 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                     child: ListView.builder(
                       shrinkWrap: true,
                       physics: ClampingScrollPhysics(),
-                      itemCount: 5,
+                      itemCount: _restaurantList.length,
                       itemBuilder: (BuildContext ctx, int index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 12),
-                          child: RestaurantCard(),
+                          child: RestaurantCard(_restaurantList[index]),
                         );
                       },
                     ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:milkman_assessment/helpers/colorConstants.dart';
+import 'package:milkman_assessment/helpers/color_constants.dart';
 
 const kHeader = TextStyle(
   fontFamily: "Sen",

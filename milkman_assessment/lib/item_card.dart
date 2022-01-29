@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:milkman_assessment/helpers/colorConstants.dart';
-import 'package:milkman_assessment/helpers/styleConstants.dart';
-import 'package:milkman_assessment/incrementDecrementWidget.dart';
+import 'package:milkman_assessment/helpers/color_constants.dart';
+import 'package:milkman_assessment/helpers/style_constants.dart';
+import 'package:milkman_assessment/helpers/increment_decrement_widget.dart';
 
 class ItemCard extends StatefulWidget {
   const ItemCard({Key? key}) : super(key: key);

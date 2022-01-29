@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:milkman_assessment/checkoutPage.dart';
-import 'package:milkman_assessment/helpers/colorConstants.dart';
-import 'package:milkman_assessment/helpers/styleConstants.dart';
-import 'package:milkman_assessment/itemCard.dart';
+import 'package:milkman_assessment/checkout_page.dart';
+import 'package:milkman_assessment/helpers/color_constants.dart';
+import 'package:milkman_assessment/helpers/style_constants.dart';
+import 'package:milkman_assessment/item_card.dart';
 
 class RestaurantDetailScreen extends StatefulWidget {
   const RestaurantDetailScreen({Key? key}) : super(key: key);
