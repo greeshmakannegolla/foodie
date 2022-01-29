@@ -127,7 +127,7 @@ class _CheckOutState extends State<CheckOut> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  "images/promo.png",
+                                  promoIcon,
                                   height: 35,
                                   width: 35,
                                 ),
