@@ -19,6 +19,7 @@ class CheckOut extends StatefulWidget {
 class _CheckOutState extends State<CheckOut> {
   late TextEditingController _promoController;
   late RestaurantMock _restaurantData;
+  bool _isPromoApplied = false;
 
   @override
   void initState() {
@@ -180,11 +181,23 @@ class _CheckOutState extends State<CheckOut> {
                             ),
                             TextField(
                                 controller: _promoController,
-                                onChanged: (newText) {},
+                                onChanged: (newText) {
+                                  if (_promoController.text.isEmpty) {
+                                    _isPromoApplied = false;
+                                    setState(() {});
+                                  }
+                                },
                                 decoration: InputDecoration(
                                     suffix: InkWell(
-                                      child: Text("APPLY", style: kData),
+                                      child: _isPromoApplied
+                                          ? Icon(
+                                              Icons.check_circle_rounded,
+                                              color: Colors.green,
+                                            )
+                                          : Text("APPLY", style: kData),
                                       onTap: () async {
+                                        _isPromoApplied = true;
+                                        setState(() {});
                                         FocusManager.instance.primaryFocus
                                             ?.unfocus();
                                         await showDialog(
@@ -208,24 +221,33 @@ class _CheckOutState extends State<CheckOut> {
                                         borderSide: BorderSide.none),
                                     contentPadding:
                                         EdgeInsets.symmetric(horizontal: 8))),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    _promoController.clear();
-                                    setState(() {});
-                                  },
-                                  child: Text(remove,
-                                      style: TextStyle(
-                                          color: ColorConstants
-                                              .actionButtonColor)),
-                                ),
-                              ],
-                            ),
+                            (_isPromoApplied &&
+                                    _promoController.text.isNotEmpty)
+                                ? Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          InkWell(
+                                            onTap: () {
+                                              _promoController.clear();
+                                              _isPromoApplied = false;
+                                              setState(() {});
+                                            },
+                                            child: Text(remove,
+                                                style: TextStyle(
+                                                    color: ColorConstants
+                                                        .actionButtonColor)),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  )
+                                : Container(),
                             SizedBox(
                               height: 30,
                             ),
