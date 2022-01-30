@@ -5,6 +5,8 @@ const String tipContent =
 const String deliveryHeader = "Delivery instructions";
 const String deliveryContent = "Contactless delivery - Leave at door";
 const String searchRestaurants = 'Search Restaurants';
+const String maxSafety = 'MAX Safety';
+const String ratingFilter = 'Rating: 4+';
 
 //Image Paths
 const String vegIcon = "images/veg.png";

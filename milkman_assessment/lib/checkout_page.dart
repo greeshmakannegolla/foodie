@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
 import 'package:milkman_assessment/helpers/color_constants.dart';
 import 'package:milkman_assessment/helpers/string_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
@@ -8,7 +9,8 @@ import 'package:milkman_assessment/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
 
 class CheckOut extends StatefulWidget {
-  const CheckOut({Key? key}) : super(key: key);
+  final RestaurantMock restaurantData;
+  const CheckOut(this.restaurantData, {Key? key}) : super(key: key);
 
   @override
   _CheckOutState createState() => _CheckOutState();
@@ -16,11 +18,13 @@ class CheckOut extends StatefulWidget {
 
 class _CheckOutState extends State<CheckOut> {
   late TextEditingController _promoController;
+  late RestaurantMock _restaurantData;
 
   @override
   void initState() {
     super.initState();
     _promoController = TextEditingController();
+    _restaurantData = widget.restaurantData;
   }
 
   @override
@@ -69,7 +73,7 @@ class _CheckOutState extends State<CheckOut> {
                           ),
                         ),
                         Text(
-                          "MAKE PAYMENT",
+                          (cart.getCartTotal() == 0) ? "" : "MAKE PAYMENT",
                           style: kHeader.copyWith(
                             color: ColorConstants.appBackgroundColor,
                             fontSize: 16,
@@ -79,16 +83,18 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                   ),
                   onPressed: () async {
-                    await showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          content: Text(
-                            "Payment successful! Delicious food is on your way!",
-                            style: kData,
-                          )),
-                    );
+                    (cart.getCartTotal() > 0)
+                        ? await showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8)),
+                                content: Text(
+                                  "Payment successful! Delicious food is on your way!",
+                                  style: kData,
+                                )),
+                          )
+                        : null;
                   },
                 ),
                 floatingActionButtonLocation:
@@ -343,7 +349,7 @@ class _CheckOutState extends State<CheckOut> {
         ClipRRect(
           borderRadius: BorderRadius.circular(14.0),
           child: Image.asset(
-            food3,
+            _restaurantData.imagePath,
             height: 65,
             width: 65,
             fit: BoxFit.fill,
@@ -354,10 +360,10 @@ class _CheckOutState extends State<CheckOut> {
         ),
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
-            "Paradise",
+            _restaurantData.name,
             style: kData,
           ),
-          Text("Hyderabad",
+          Text(_restaurantData.address,
               style: kSecondaryHeader.copyWith(
                   fontSize: 13,
                   color: ColorConstants.secondaryTextColor.withOpacity(0.6)))

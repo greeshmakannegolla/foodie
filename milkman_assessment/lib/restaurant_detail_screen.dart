@@ -198,7 +198,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
             onPressed: () async {
               await Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CheckOut()),
+                MaterialPageRoute(
+                    builder: (context) => CheckOut(_restaurantData)),
               );
               setState(() {});
             },

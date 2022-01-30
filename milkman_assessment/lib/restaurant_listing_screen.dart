@@ -98,8 +98,8 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                     spacing: 6.0,
                     runSpacing: 0,
                     children: <Widget>[
-                      _buildChip('MAX Safety'),
-                      _buildChip('Rating:4+'),
+                      _buildChip(maxSafety),
+                      _buildChip(ratingFilter),
                     ],
                   ),
                   _filteredRestaurantList.isEmpty
