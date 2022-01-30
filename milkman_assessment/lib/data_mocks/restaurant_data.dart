@@ -35,11 +35,11 @@ class MenuItemMock {
   final String imagePath;
   final bool isVeg;
 
-  //Cons
   MenuItemMock(this.id, this.name, this.price, this.description, this.imagePath,
       this.isVeg);
 }
 
+//Mock data
 List<RestaurantMock> getRestaurantList() {
   return [
     RestaurantMock(

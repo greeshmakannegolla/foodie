@@ -145,6 +145,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                         SizedBox(
                           height: 18,
                         ),
+                        //List of items available in the restaurant
                         ListView.builder(
                           shrinkWrap: true,
                           physics: ClampingScrollPhysics(),
@@ -208,6 +209,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
               ),
             ),
             onPressed: () async {
+              //Navigation to checkout page
               await Navigator.push(
                 context,
                 MaterialPageRoute(

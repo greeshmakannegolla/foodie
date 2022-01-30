@@ -68,6 +68,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  //Restaurant search
                   Container(
                       height: 80,
                       padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
@@ -106,7 +107,9 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                             style: kData,
                           ),
                         ))
-                      : ListView.builder(
+                      :
+                      //To fetch restaurants
+                      ListView.builder(
                           shrinkWrap: true,
                           physics: ClampingScrollPhysics(),
                           itemCount: _filteredRestaurantList.length,
@@ -116,6 +119,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                                   vertical: 10, horizontal: 12),
                               child: InkWell(
                                   onTap: () {
+                                    //Navigation to the selected restaurant
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -141,6 +145,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
     );
   }
 
+//Function to apply search; max safety and rating filters
   void _applyFilters() {
     _filteredRestaurantList.clear();
     _filteredRestaurantList.addAll(_restaurantList);
@@ -171,6 +176,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
     setState(() {});
   }
 
+  //To build the UI for filters
   Widget _buildChip(String label) {
     return InkWell(
       onTap: () {

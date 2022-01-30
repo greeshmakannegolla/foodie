@@ -33,6 +33,7 @@ class _ItemCardState extends State<ItemCard> {
     _itemQuantity =
         context.watch<CartProvider>().getCart.getItemQuantity(_item);
 
+//UI of each item in the restaurant
     return Card(
       elevation: 0,
       child: Column(

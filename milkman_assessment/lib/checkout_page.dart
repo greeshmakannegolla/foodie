@@ -133,6 +133,7 @@ class _CheckOutState extends State<CheckOut> {
                         SizedBox(
                           height: 30,
                         ),
+                        //To display items in the cart
                         ListView.builder(
                           shrinkWrap: true,
                           physics: ClampingScrollPhysics(),

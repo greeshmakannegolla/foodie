@@ -7,6 +7,7 @@ class CartProvider with ChangeNotifier {
 
   Cart get getCart => _cart;
 
+//Function to update cart and notify listeners
   updateCart(CartItem item) {
     if (cartRestaurantId != item.restaurantId) {
       _cart.clear();

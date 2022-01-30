@@ -25,6 +25,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
 
   @override
   Widget build(BuildContext context) {
+    //Restaurant card UI for the restaurant listing screen
     return Card(
       margin: const EdgeInsets.only(top: 15.0),
       elevation: 5,

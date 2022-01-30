@@ -51,6 +51,7 @@ class CartItem {
   int quantity;
   int restaurantId;
 
+  //Overriding to specify the condition to be checked upon during menu item comparison
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;

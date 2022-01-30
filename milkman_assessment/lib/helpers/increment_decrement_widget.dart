@@ -25,6 +25,7 @@ class _IncrementDecrementState extends State<IncrementDecrement> {
 
   @override
   Widget build(BuildContext context) {
+    //Widget to display the increment/decrement counter during "Add to cart" workflow
     return Row(
       children: [
         IconButton(
