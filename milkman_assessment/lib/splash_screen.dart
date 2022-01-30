@@ -1,7 +1,8 @@
 import 'dart:async';
 
+import 'package:flavor/flavor_assets.dart';
+import 'package:flavor/flavor_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:milkman_assessment/helpers/color_constants.dart';
 import 'package:milkman_assessment/restaurant_listing_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -26,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: ColorConstants.kSplashBackgroundColor,
-        child: Image.asset("images/launch_image.png"));
+        color: FlavorTheme.kSplashBackgroundColor,
+        child: Image.asset(FlavorAssets.kLogo));
   }
 }

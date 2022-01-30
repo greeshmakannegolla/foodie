@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
 import 'package:milkman_assessment/helpers/color_constants.dart';
 import 'package:milkman_assessment/helpers/increment_decrement_widget.dart';
-import 'package:milkman_assessment/helpers/string_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/models/cart_model.dart';
 import 'package:milkman_assessment/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flavor/flavor_theme.dart';
+import 'package:flavor/flavor_assets.dart';
 
 class ItemCard extends StatefulWidget {
   final MenuItemMock item;
@@ -50,7 +51,7 @@ class _ItemCardState extends State<ItemCard> {
                   children: [
                     _item.isVeg
                         ? Image.asset(
-                            kVegIcon,
+                            FlavorAssets.kVegIcon,
                             height: 20,
                             width: 25,
                           )
@@ -111,7 +112,7 @@ class _ItemCardState extends State<ItemCard> {
                           child: Text(
                             "ADD",
                             style: kSecondaryHeader.copyWith(
-                                color: ColorConstants.kAppPrimaryColor,
+                                color: FlavorTheme.kAppPrimaryColor,
                                 fontSize: 20),
                           ))
                       : IncrementDecrement(

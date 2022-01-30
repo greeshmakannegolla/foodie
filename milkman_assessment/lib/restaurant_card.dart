@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:flavor/flavor_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
 import 'package:milkman_assessment/helpers/color_constants.dart';
@@ -109,8 +110,8 @@ class _RestaurantCardState extends State<RestaurantCard> {
           height: 5.5,
         ),
         Text(_restaurantData.closingTime,
-            style: kSecondaryHeader.copyWith(
-                color: ColorConstants.kAppPrimaryColor)),
+            style:
+                kSecondaryHeader.copyWith(color: FlavorTheme.kAppPrimaryColor)),
         SizedBox(
           height: 5.5,
         ),

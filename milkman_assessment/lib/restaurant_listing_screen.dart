@@ -9,6 +9,7 @@ import 'package:milkman_assessment/helpers/string_constants.dart';
 import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/restaurant_card.dart';
 import 'package:milkman_assessment/restaurant_detail_screen.dart';
+import 'package:flavor/flavor_theme.dart';
 
 class RestaurantListingScreen extends StatefulWidget {
   const RestaurantListingScreen({Key? key}) : super(key: key);
@@ -57,7 +58,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
             ),
             flexibleSpace: Container(
               decoration: BoxDecoration(
-                color: ColorConstants.kAppPrimaryColor,
+                color: FlavorTheme.kAppPrimaryColor,
               ),
             ),
           ),
@@ -74,7 +75,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                       padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                       child: TextField(
                           controller: _searchController,
-                          cursorColor: ColorConstants.kAppPrimaryColor,
+                          cursorColor: FlavorTheme.kAppPrimaryColor,
                           onChanged: (newText) {
                             _applyFilters();
                           },
@@ -83,7 +84,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                               filled: true,
                               prefixIcon: Icon(
                                 Icons.search_rounded,
-                                color: ColorConstants.kAppPrimaryColor,
+                                color: FlavorTheme.kAppPrimaryColor,
                               ),
                               hintText: kSearchRestaurants,
                               border: OutlineInputBorder(
@@ -200,7 +201,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
         ),
         backgroundColor: (label == kMaxSafety && _maxSafety) ||
                 (label == kRatingFilter && _ratingFilter)
-            ? ColorConstants.kAppPrimaryColor
+            ? FlavorTheme.kAppPrimaryColor
             : ColorConstants.kAppBackgroundColor,
         elevation: 1,
         shadowColor: Colors.grey[60],

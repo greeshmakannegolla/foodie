@@ -7,6 +7,7 @@ import 'package:milkman_assessment/helpers/increment_decrement_widget.dart';
 import 'package:milkman_assessment/models/cart_model.dart';
 import 'package:milkman_assessment/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flavor/flavor_assets.dart';
 
 class CheckOut extends StatefulWidget {
   final RestaurantMock restaurantData;
@@ -163,7 +164,7 @@ class _CheckOutState extends State<CheckOut> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  kPromoIcon,
+                                  FlavorAssets.kPromoIcon,
                                   height: 35,
                                   width: 35,
                                 ),
@@ -340,7 +341,7 @@ class _CheckOutState extends State<CheckOut> {
         Expanded(
           flex: 1,
           child: Image.asset(
-            kVegIcon,
+            FlavorAssets.kVegIcon,
             height: 25,
             width: 25,
           ),
