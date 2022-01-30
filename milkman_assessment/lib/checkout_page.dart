@@ -162,7 +162,7 @@ class _CheckOutState extends State<CheckOut> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  promoIcon,
+                                  kPromoIcon,
                                   height: 35,
                                   width: 35,
                                 ),
@@ -237,7 +237,7 @@ class _CheckOutState extends State<CheckOut> {
                                               _isPromoApplied = false;
                                               setState(() {});
                                             },
-                                            child: Text(remove,
+                                            child: Text(kRemove,
                                                 style: TextStyle(
                                                     color: ColorConstants
                                                         .actionButtonColor)),
@@ -276,13 +276,13 @@ class _CheckOutState extends State<CheckOut> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          tipHeader,
+          kTipHeader,
           style: kData,
         ),
         SizedBox(
           height: 8,
         ),
-        Text(tipContent,
+        Text(kTipContent,
             style: kData.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
@@ -309,7 +309,7 @@ class _CheckOutState extends State<CheckOut> {
               width: 5,
             ),
             Text(
-              deliveryHeader,
+              kDeliveryHeader,
               style: kData,
             ),
           ],
@@ -317,7 +317,7 @@ class _CheckOutState extends State<CheckOut> {
         SizedBox(
           height: 8,
         ),
-        Text(deliveryContent,
+        Text(kDeliveryContent,
             style: kData.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
@@ -339,7 +339,7 @@ class _CheckOutState extends State<CheckOut> {
         Expanded(
           flex: 1,
           child: Image.asset(
-            vegIcon,
+            kVegIcon,
             height: 25,
             width: 25,
           ),

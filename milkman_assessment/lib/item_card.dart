@@ -49,7 +49,7 @@ class _ItemCardState extends State<ItemCard> {
                   children: [
                     _item.isVeg
                         ? Image.asset(
-                            vegIcon,
+                            kVegIcon,
                             height: 20,
                             width: 25,
                           )

@@ -84,7 +84,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                                 Icons.search_rounded,
                                 color: ColorConstants.appPrimaryColor,
                               ),
-                              hintText: searchRestaurants,
+                              hintText: kSearchRestaurants,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide.none),
@@ -93,8 +93,8 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                     spacing: 6.0,
                     runSpacing: 0,
                     children: <Widget>[
-                      _buildChip(maxSafety),
-                      _buildChip(ratingFilter),
+                      _buildChip(kMaxSafety),
+                      _buildChip(kRatingFilter),
                     ],
                   ),
                   _filteredRestaurantList.isEmpty
@@ -174,10 +174,10 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
   Widget _buildChip(String label) {
     return InkWell(
       onTap: () {
-        if (label == maxSafety) {
+        if (label == kMaxSafety) {
           _maxSafety = !_maxSafety;
         }
-        if (label == ratingFilter) {
+        if (label == kRatingFilter) {
           _ratingFilter = !_ratingFilter;
         }
         _applyFilters();
@@ -186,11 +186,14 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
         label: Text(
           label,
           style: TextStyle(
-            color: ColorConstants.textPrimaryColor,
+            color: (label == kMaxSafety && _maxSafety) ||
+                    (label == kRatingFilter && _ratingFilter)
+                ? ColorConstants.appBackgroundColor
+                : ColorConstants.textPrimaryColor,
           ),
         ),
-        backgroundColor: (label == maxSafety && _maxSafety) ||
-                (label == ratingFilter && _ratingFilter)
+        backgroundColor: (label == kMaxSafety && _maxSafety) ||
+                (label == kRatingFilter && _ratingFilter)
             ? ColorConstants.appPrimaryColor
             : ColorConstants.appBackgroundColor,
         elevation: 1,

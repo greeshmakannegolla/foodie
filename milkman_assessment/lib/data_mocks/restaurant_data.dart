@@ -50,26 +50,26 @@ List<RestaurantMock> getRestaurantList() {
         300,
         "Closes in 25 mins",
         true,
-        food2,
+        kFood2,
         [
           MenuItemMock(
               1,
               "Veg Biryani",
               309,
               "Made with indian spices, fresh veggies and lots of love",
-              food2,
+              kFood2,
               true),
           MenuItemMock(2, "Veg Thali", 700,
-              "Thali comprising rice, roti, curry and sweet", food3, true),
+              "Thali comprising rice, roti, curry and sweet", kFood3, true),
           MenuItemMock(
               3,
               "Chicken Biryani",
               429,
               "Made with indian spices, chicken and lots of love",
-              food2,
+              kFood2,
               false),
           MenuItemMock(4, "Cheese Loaded Burger", 99,
-              "Loaded with veggies and cheese", food7, true),
+              "Loaded with veggies and cheese", kFood7, true),
         ],
         "Plot 49, Survey 261 to 266, Hyderabad"),
     RestaurantMock(
@@ -80,12 +80,12 @@ List<RestaurantMock> getRestaurantList() {
         200,
         "Closes in 30 mins",
         true,
-        food9,
+        kFood9,
         [
           MenuItemMock(5, "Pancakes", 200,
-              "Get lost in the chocolate goeeyness", food9, false),
+              "Get lost in the chocolate goeeyness", kFood9, false),
           MenuItemMock(6, "Cheese Loaded Burger", 99,
-              "Loaded with veggies and cheese", food7, true),
+              "Loaded with veggies and cheese", kFood7, true),
         ],
         "200 Ramkrishna Nagar Bldg th Road Khar"),
     RestaurantMock(
@@ -96,14 +96,14 @@ List<RestaurantMock> getRestaurantList() {
         400,
         "Closes in 46 mins",
         true,
-        food7,
+        kFood7,
         [
           MenuItemMock(7, "Veggie Loaded Burger", 99,
-              "Loaded with veggies and cheese", food7, true),
+              "Loaded with veggies and cheese", kFood7, true),
           MenuItemMock(8, "Mixed Veg Curry", 399,
-              "With the goodness of vegetables", food5, true),
+              "With the goodness of vegetables", kFood5, true),
           MenuItemMock(9, "Chole Bhatura", 199,
-              "2 bhature served with spicy chole curry", food1, true),
+              "2 bhature served with spicy chole curry", kFood1, true),
         ],
         "Plot No. 310 B (First Floor), Road No - 25, Venkatagiri, Jubilee Hills"),
     RestaurantMock(
@@ -114,12 +114,12 @@ List<RestaurantMock> getRestaurantList() {
         600,
         "Closes in 59 mins",
         true,
-        food10,
+        kFood10,
         [
-          MenuItemMock(
-              10, "Vegan delight", 299, "Made with tofu, tempeh", food10, true),
+          MenuItemMock(10, "Vegan delight", 299, "Made with tofu, tempeh",
+              kFood10, true),
           MenuItemMock(11, "Stir-fried veggies", 399, "Loaded with veggies",
-              food8, true),
+              kFood8, true),
         ],
         "Softsol Tower-1 2nd floor A Wing, Infocity, Software Units Layout, Madhapur"),
     RestaurantMock(
@@ -130,11 +130,11 @@ List<RestaurantMock> getRestaurantList() {
         150,
         "Closes in 20 mins",
         false,
-        food3,
+        kFood3,
         [
           MenuItemMock(12, "Chicken Curry", 399, "With the goodness of spices",
-              food5, false),
-          MenuItemMock(13, "Fish fry", 299, "Spicy treat", food8, false),
+              kFood5, false),
+          MenuItemMock(13, "Fish fry", 299, "Spicy treat", kFood8, false),
         ],
         "P-187, R R District, S Lin Pally")
   ];
