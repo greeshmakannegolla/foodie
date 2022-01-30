@@ -4,6 +4,7 @@ const String tipContent =
     "Thank your delivery partner by leaving them a tip. 100% of the tip will go to your delivery partner.";
 const String deliveryHeader = "Delivery instructions";
 const String deliveryContent = "Contactless delivery - Leave at door";
+const String searchRestaurants = 'Search Restaurants';
 
 //Image Paths
 const String vegIcon = "images/veg.png";

@@ -4,6 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:milkman_assessment/data_mocks/restaurant_data.dart';
 import 'package:milkman_assessment/helpers/color_constants.dart';
+import 'package:milkman_assessment/helpers/helper_functions.dart';
+import 'package:milkman_assessment/helpers/string_constants.dart';
+import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/restaurant_card.dart';
 import 'package:milkman_assessment/restaurant_detail_screen.dart';
 
@@ -17,11 +20,16 @@ class RestaurantListingScreen extends StatefulWidget {
 
 class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
   List<RestaurantMock> _restaurantList = [];
+  List<RestaurantMock> _filteredRestaurantList = [];
+
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _restaurantList = getRestaurantList();
+    _filteredRestaurantList.clear();
+    _filteredRestaurantList.addAll(_restaurantList);
   }
 
   @override
@@ -62,12 +70,26 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                       height: 80,
                       padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                       child: TextField(
-                          onChanged: (newText) {},
+                          controller: _searchController,
+                          cursorColor: ColorConstants.appPrimaryColor,
+                          onChanged: (newText) {
+                            _filteredRestaurantList.clear();
+                            _filteredRestaurantList.addAll(_restaurantList);
+                            if (_searchController.text.isNotEmpty) {
+                              _filteredRestaurantList = searchRestaurant(
+                                  _searchController.text,
+                                  _filteredRestaurantList);
+                            }
+                            setState(() {});
+                          },
                           decoration: InputDecoration(
                               fillColor: Colors.black.withOpacity(0.05),
                               filled: true,
-                              prefixIcon: Icon(Icons.search_rounded),
-                              hintText: 'Search Restaurants',
+                              prefixIcon: Icon(
+                                Icons.search_rounded,
+                                color: ColorConstants.appPrimaryColor,
+                              ),
+                              hintText: searchRestaurants,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide.none),
@@ -80,28 +102,39 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                       _buildChip('Rating:4+'),
                     ],
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemCount: _restaurantList.length,
-                    itemBuilder: (BuildContext ctx, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 12),
-                        child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        RestaurantDetailScreen(
-                                            _restaurantList[index])),
-                              );
-                            },
-                            child: RestaurantCard(_restaurantList[index])),
-                      );
-                    },
-                  ),
+                  _filteredRestaurantList.isEmpty
+                      ? Center(
+                          child: Padding(
+                          padding: const EdgeInsets.only(top: 30.0),
+                          child: Text(
+                            'No Results found',
+                            style: kData,
+                          ),
+                        ))
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          physics: ClampingScrollPhysics(),
+                          itemCount: _filteredRestaurantList.length,
+                          itemBuilder: (BuildContext ctx, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 12),
+                              child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              RestaurantDetailScreen(
+                                                  _filteredRestaurantList[
+                                                      index])),
+                                    );
+                                  },
+                                  child: RestaurantCard(
+                                      _filteredRestaurantList[index])),
+                            );
+                          },
+                        ),
                 ],
               ),
             ),
