@@ -155,6 +155,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                                   vertical: 10, horizontal: 12),
                               child: ItemCard(
                                 _restaurantData.items[index],
+                                _restaurantData.id,
                                 key: UniqueKey(),
                               ),
                             );

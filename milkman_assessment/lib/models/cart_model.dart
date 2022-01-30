@@ -15,6 +15,10 @@ class Cart {
         0, (previousValue, element) => previousValue + element.quantity);
   }
 
+  clear() {
+    cartItems.clear();
+  }
+
   updateItem(CartItem item) {
     if (cartItems.contains(item)) {
       var index = cartItems.indexOf(item);
@@ -45,6 +49,7 @@ class Cart {
 class CartItem {
   MenuItemMock menuItem;
   int quantity;
+  int restaurantId;
 
   @override
   bool operator ==(Object other) {
@@ -56,5 +61,5 @@ class CartItem {
   @override
   int get hashCode => menuItem.id.hashCode;
 
-  CartItem(this.menuItem, this.quantity);
+  CartItem(this.menuItem, this.quantity, this.restaurantId);
 }

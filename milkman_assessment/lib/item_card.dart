@@ -10,7 +10,8 @@ import 'package:provider/provider.dart';
 
 class ItemCard extends StatefulWidget {
   final MenuItemMock item;
-  const ItemCard(this.item, {Key? key}) : super(key: key);
+  final int id;
+  const ItemCard(this.item, this.id, {Key? key}) : super(key: key);
 
   @override
   _ItemCardState createState() => _ItemCardState();
@@ -99,7 +100,7 @@ class _ItemCardState extends State<ItemCard> {
                           onPressed: () {
                             context
                                 .read<CartProvider>()
-                                .updateCart(CartItem(_item, 1));
+                                .updateCart(CartItem(_item, 1, widget.id));
                           },
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
@@ -133,7 +134,7 @@ class _ItemCardState extends State<ItemCard> {
 
   _itemQuantityUpdated(int newValue) {
     var cartProvider = context.read<CartProvider>();
-    cartProvider.updateCart(CartItem(_item, newValue));
+    cartProvider.updateCart(CartItem(_item, newValue, widget.id));
 
     setState(() {});
   }

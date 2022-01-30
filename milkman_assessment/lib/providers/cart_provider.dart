@@ -3,12 +3,17 @@ import 'package:milkman_assessment/models/cart_model.dart';
 
 class CartProvider with ChangeNotifier {
   final _cart = Cart();
+  var cartRestaurantId = 0;
 
   Cart get getCart => _cart;
 
   updateCart(CartItem item) {
-    _cart.updateItem(item);
+    if (cartRestaurantId != item.restaurantId) {
+      _cart.clear();
+    }
 
+    cartRestaurantId = item.restaurantId;
+    _cart.updateItem(item);
     notifyListeners();
   }
 }

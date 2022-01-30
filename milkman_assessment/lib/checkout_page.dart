@@ -390,16 +390,22 @@ class _CheckOutState extends State<CheckOut> {
         SizedBox(
           width: 18,
         ),
-        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            _restaurantData.name,
-            style: kData,
-          ),
-          Text(_restaurantData.address,
-              style: kSecondaryHeader.copyWith(
-                  fontSize: 13,
-                  color: ColorConstants.secondaryTextColor.withOpacity(0.6)))
-        ])
+        Expanded(
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  _restaurantData.name,
+                  style: kData,
+                ),
+                Text(_restaurantData.address,
+                    style: kSecondaryHeader.copyWith(
+                        fontSize: 13,
+                        color:
+                            ColorConstants.secondaryTextColor.withOpacity(0.6)))
+              ]),
+        )
       ],
     );
   }
