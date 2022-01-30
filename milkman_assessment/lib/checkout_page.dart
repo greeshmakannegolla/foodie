@@ -139,8 +139,7 @@ class _CheckOutState extends State<CheckOut> {
                           itemCount: cart.cartItems.length,
                           itemBuilder: (BuildContext ctx, int index) {
                             return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 12),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
                               child: _getItemListTile(
                                   cart.cartItems[index], context),
                             );
@@ -337,29 +336,40 @@ class _CheckOutState extends State<CheckOut> {
   Row _getItemListTile(CartItem item, BuildContext context) {
     return Row(
       children: [
-        Image.asset(
-          vegIcon,
-          height: 25,
-          width: 25,
+        Expanded(
+          flex: 1,
+          child: Image.asset(
+            vegIcon,
+            height: 25,
+            width: 25,
+          ),
         ),
         SizedBox(
           width: 8,
         ),
-        Text(
-          item.menuItem.name,
-          style: kData,
+        Expanded(
+          flex: 2,
+          child: Text(
+            item.menuItem.name,
+            style: kData,
+          ),
         ),
-        Spacer(),
-        IncrementDecrement(
-          initialValue: item.quantity,
-          onChanged: (newValue) {
-            item.quantity = newValue;
-            context.read<CartProvider>().updateCart(item);
-          },
+        Expanded(
+          flex: 2,
+          child: IncrementDecrement(
+            initialValue: item.quantity,
+            onChanged: (newValue) {
+              item.quantity = newValue;
+              context.read<CartProvider>().updateCart(item);
+            },
+          ),
         ),
-        Text(
-          "₹" "${item.menuItem.price * item.quantity}",
-          style: kData,
+        Expanded(
+          flex: 1,
+          child: Text(
+            "₹" "${item.menuItem.price * item.quantity}",
+            style: kData,
+          ),
         )
       ],
     );
