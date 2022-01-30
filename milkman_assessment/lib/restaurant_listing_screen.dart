@@ -36,6 +36,15 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
       },
       child: SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            title: Text("Hey there,"),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                color: ColorConstants.appPrimaryColor,
+              ),
+            ),
+          ),
           body: SingleChildScrollView(
             child: Padding(
               padding:
