@@ -6,6 +6,7 @@ import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/item_card.dart';
 import 'package:milkman_assessment/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flavor/flavor_theme.dart';
 
 class RestaurantDetailScreen extends StatefulWidget {
   final RestaurantMock restaurantData;
@@ -174,7 +175,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
           ),
           floatingActionButton: TextButton(
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.redAccent),
+                backgroundColor:
+                    MaterialStateProperty.all(FlavorTheme.kButtonPrimaryColor),
                 fixedSize: MaterialStateProperty.all(
                     Size(MediaQuery.of(context).size.width * 0.95, 55)),
                 shape: MaterialStateProperty.all(

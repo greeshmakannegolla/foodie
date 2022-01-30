@@ -28,6 +28,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
         color: FlavorTheme.kSplashBackgroundColor,
-        child: Image.asset(FlavorAssets.kLogo));
+        child: Image.asset(
+          FlavorAssets.kLogo,
+        ));
   }
 }

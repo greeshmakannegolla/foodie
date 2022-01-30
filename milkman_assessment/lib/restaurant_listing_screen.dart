@@ -10,6 +10,7 @@ import 'package:milkman_assessment/helpers/style_constants.dart';
 import 'package:milkman_assessment/restaurant_card.dart';
 import 'package:milkman_assessment/restaurant_detail_screen.dart';
 import 'package:flavor/flavor_theme.dart';
+import 'package:flavor/flavor_strings.dart';
 
 class RestaurantListingScreen extends StatefulWidget {
   const RestaurantListingScreen({Key? key}) : super(key: key);
@@ -50,10 +51,10 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
           appBar: AppBar(
             elevation: 0,
             title: Row(
-              children: const [
+              children: [
                 Icon(Icons.home_rounded),
                 SizedBox(width: 5),
-                Text("Home"),
+                Text(FlavorStrings.homeDisplay),
               ],
             ),
             flexibleSpace: Container(

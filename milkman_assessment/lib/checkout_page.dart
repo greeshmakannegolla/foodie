@@ -8,6 +8,7 @@ import 'package:milkman_assessment/models/cart_model.dart';
 import 'package:milkman_assessment/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flavor/flavor_assets.dart';
+import 'package:flavor/flavor_theme.dart';
 
 class CheckOut extends StatefulWidget {
   final RestaurantMock restaurantData;
@@ -52,8 +53,8 @@ class _CheckOutState extends State<CheckOut> {
             child: Scaffold(
                 floatingActionButton: TextButton(
                   style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.redAccent),
+                      backgroundColor: MaterialStateProperty.all(
+                          FlavorTheme.kButtonPrimaryColor),
                       fixedSize: MaterialStateProperty.all(
                           Size(MediaQuery.of(context).size.width * 0.95, 55)),
                       shape: MaterialStateProperty.all(
