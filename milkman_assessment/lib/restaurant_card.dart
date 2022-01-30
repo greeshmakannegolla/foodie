@@ -69,7 +69,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
             ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(8)),
               child: Container(
-                color: ColorConstants.ratingColor,
+                color: ColorConstants.kRatingColor,
                 height: 25,
                 width: 45,
                 child: Padding(
@@ -81,7 +81,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
                       style: kSecondaryHeader.copyWith(
                           fontWeight: FontWeight.w600,
                           fontSize: 13.5,
-                          color: ColorConstants.appBackgroundColor),
+                          color: ColorConstants.kAppBackgroundColor),
                     ),
                     SizedBox(
                       width: 2,
@@ -89,7 +89,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
                     Icon(
                       Icons.star_rounded,
                       size: 12,
-                      color: ColorConstants.appBackgroundColor,
+                      color: ColorConstants.kAppBackgroundColor,
                     )
                   ]),
                 ),
@@ -110,7 +110,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
         ),
         Text(_restaurantData.closingTime,
             style: kSecondaryHeader.copyWith(
-                color: ColorConstants.appPrimaryColor)),
+                color: ColorConstants.kAppPrimaryColor)),
         SizedBox(
           height: 5.5,
         ),

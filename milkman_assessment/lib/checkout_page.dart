@@ -69,14 +69,14 @@ class _CheckOutState extends State<CheckOut> {
                         Text(
                           "₹" "${cart.getCartTotal()}",
                           style: kHeader.copyWith(
-                            color: ColorConstants.appBackgroundColor,
+                            color: ColorConstants.kAppBackgroundColor,
                             fontSize: 16,
                           ),
                         ),
                         Text(
                           (cart.getCartTotal() == 0) ? "" : "MAKE PAYMENT",
                           style: kHeader.copyWith(
-                            color: ColorConstants.appBackgroundColor,
+                            color: ColorConstants.kAppBackgroundColor,
                             fontSize: 16,
                           ),
                         ),
@@ -100,12 +100,12 @@ class _CheckOutState extends State<CheckOut> {
                 ),
                 floatingActionButtonLocation:
                     FloatingActionButtonLocation.centerFloat,
-                backgroundColor: ColorConstants.appBackgroundColor,
+                backgroundColor: ColorConstants.kAppBackgroundColor,
                 appBar: AppBar(
                   elevation: 0,
                   flexibleSpace: Container(
                     decoration: BoxDecoration(
-                      color: ColorConstants.appBackgroundColor,
+                      color: ColorConstants.kAppBackgroundColor,
                     ),
                   ),
                   leading: InkWell(
@@ -116,7 +116,7 @@ class _CheckOutState extends State<CheckOut> {
                       padding: const EdgeInsets.all(8.0),
                       child: Icon(
                         Icons.arrow_back_ios_rounded,
-                        color: ColorConstants.textPrimaryColor,
+                        color: ColorConstants.kTextPrimaryColor,
                       ),
                     ),
                   ),
@@ -150,7 +150,7 @@ class _CheckOutState extends State<CheckOut> {
                           height: 20,
                         ),
                         Divider(
-                          color: ColorConstants.secondaryTextColor
+                          color: ColorConstants.kSecondaryTextColor
                               .withOpacity(0.1),
                           thickness: 12,
                         ),
@@ -241,7 +241,7 @@ class _CheckOutState extends State<CheckOut> {
                                             child: Text(kRemove,
                                                 style: TextStyle(
                                                     color: ColorConstants
-                                                        .actionButtonColor)),
+                                                        .kActionButtonColor)),
                                           ),
                                         ],
                                       ),
@@ -252,7 +252,7 @@ class _CheckOutState extends State<CheckOut> {
                               height: 30,
                             ),
                             Divider(
-                              color: ColorConstants.secondaryTextColor
+                              color: ColorConstants.kSecondaryTextColor
                                   .withOpacity(0.1),
                               thickness: 12,
                             ),
@@ -287,12 +287,12 @@ class _CheckOutState extends State<CheckOut> {
             style: kData.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
-                color: ColorConstants.textPrimaryColor.withOpacity(0.6))),
+                color: ColorConstants.kTextPrimaryColor.withOpacity(0.6))),
         SizedBox(
           height: 25,
         ),
         Divider(
-          color: ColorConstants.secondaryTextColor.withOpacity(0.1),
+          color: ColorConstants.kSecondaryTextColor.withOpacity(0.1),
           thickness: 12,
         ),
       ],
@@ -322,12 +322,12 @@ class _CheckOutState extends State<CheckOut> {
             style: kData.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
-                color: ColorConstants.textPrimaryColor.withOpacity(0.6))),
+                color: ColorConstants.kTextPrimaryColor.withOpacity(0.6))),
         SizedBox(
           height: 30,
         ),
         Divider(
-          color: ColorConstants.secondaryTextColor.withOpacity(0.1),
+          color: ColorConstants.kSecondaryTextColor.withOpacity(0.1),
           thickness: 12,
         ),
       ],
@@ -403,8 +403,8 @@ class _CheckOutState extends State<CheckOut> {
                 Text(_restaurantData.address,
                     style: kSecondaryHeader.copyWith(
                         fontSize: 13,
-                        color:
-                            ColorConstants.secondaryTextColor.withOpacity(0.6)))
+                        color: ColorConstants.kSecondaryTextColor
+                            .withOpacity(0.6)))
               ]),
         )
       ],

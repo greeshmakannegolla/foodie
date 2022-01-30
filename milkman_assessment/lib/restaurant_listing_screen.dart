@@ -57,7 +57,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
             ),
             flexibleSpace: Container(
               decoration: BoxDecoration(
-                color: ColorConstants.appPrimaryColor,
+                color: ColorConstants.kAppPrimaryColor,
               ),
             ),
           ),
@@ -74,7 +74,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                       padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                       child: TextField(
                           controller: _searchController,
-                          cursorColor: ColorConstants.appPrimaryColor,
+                          cursorColor: ColorConstants.kAppPrimaryColor,
                           onChanged: (newText) {
                             _applyFilters();
                           },
@@ -83,7 +83,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                               filled: true,
                               prefixIcon: Icon(
                                 Icons.search_rounded,
-                                color: ColorConstants.appPrimaryColor,
+                                color: ColorConstants.kAppPrimaryColor,
                               ),
                               hintText: kSearchRestaurants,
                               border: OutlineInputBorder(
@@ -194,14 +194,14 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
           style: TextStyle(
             color: (label == kMaxSafety && _maxSafety) ||
                     (label == kRatingFilter && _ratingFilter)
-                ? ColorConstants.appBackgroundColor
-                : ColorConstants.textPrimaryColor,
+                ? ColorConstants.kAppBackgroundColor
+                : ColorConstants.kTextPrimaryColor,
           ),
         ),
         backgroundColor: (label == kMaxSafety && _maxSafety) ||
                 (label == kRatingFilter && _ratingFilter)
-            ? ColorConstants.appPrimaryColor
-            : ColorConstants.appBackgroundColor,
+            ? ColorConstants.kAppPrimaryColor
+            : ColorConstants.kAppBackgroundColor,
         elevation: 1,
         shadowColor: Colors.grey[60],
         padding: EdgeInsets.all(8.0),

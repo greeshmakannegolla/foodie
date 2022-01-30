@@ -31,7 +31,7 @@ class _IncrementDecrementState extends State<IncrementDecrement> {
         IconButton(
           icon: Icon(
             Icons.remove_rounded,
-            color: ColorConstants.textPrimaryColor.withOpacity(0.9),
+            color: ColorConstants.kTextPrimaryColor.withOpacity(0.9),
           ),
           onPressed: () => setState(() {
             if (_itemCount != 0) {
@@ -43,14 +43,14 @@ class _IncrementDecrementState extends State<IncrementDecrement> {
         Text(
           _itemCount.toString(),
           style: kSecondaryHeader.copyWith(
-              color: ColorConstants.textPrimaryColor,
+              color: ColorConstants.kTextPrimaryColor,
               fontSize: 16,
               fontWeight: FontWeight.w600),
         ),
         IconButton(
             icon: Icon(
               Icons.add_rounded,
-              color: ColorConstants.textPrimaryColor.withOpacity(0.9),
+              color: ColorConstants.kTextPrimaryColor.withOpacity(0.9),
             ),
             onPressed: () => setState(() {
                   _itemCount++;

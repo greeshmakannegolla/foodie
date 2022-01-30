@@ -69,7 +69,7 @@ class _ItemCardState extends State<ItemCard> {
                       "₹" + _item.price.toString(),
                       style: kHeader.copyWith(
                           fontSize: 16,
-                          color: ColorConstants.secondaryTextColor
+                          color: ColorConstants.kSecondaryTextColor
                               .withOpacity(0.9),
                           fontWeight: FontWeight.w500),
                     ),
@@ -79,7 +79,7 @@ class _ItemCardState extends State<ItemCard> {
                     Text(_item.description,
                         style: kHeader.copyWith(
                             fontSize: 14,
-                            color: ColorConstants.secondaryTextColor
+                            color: ColorConstants.kSecondaryTextColor
                                 .withOpacity(0.9),
                             fontWeight: FontWeight.w500)),
                   ],
@@ -111,7 +111,7 @@ class _ItemCardState extends State<ItemCard> {
                           child: Text(
                             "ADD",
                             style: kSecondaryHeader.copyWith(
-                                color: ColorConstants.appPrimaryColor,
+                                color: ColorConstants.kAppPrimaryColor,
                                 fontSize: 20),
                           ))
                       : IncrementDecrement(
@@ -125,7 +125,7 @@ class _ItemCardState extends State<ItemCard> {
             height: 20,
           ),
           Divider(
-            color: ColorConstants.secondaryTextColor.withOpacity(0.3),
+            color: ColorConstants.kSecondaryTextColor.withOpacity(0.3),
             thickness: 0.5,
           ),
         ],

@@ -3,10 +3,11 @@
 import 'package:flutter/material.dart';
 
 class ColorConstants {
-  static const appPrimaryColor = Color(0xFFD63649);
-  static const textPrimaryColor = Color(0xFF1A3F49);
-  static const secondaryTextColor = Color(0xFF657381);
-  static const ratingColor = Colors.green;
-  static const appBackgroundColor = Colors.white;
-  static const actionButtonColor = Colors.orange;
+  static const kAppPrimaryColor = Color(0xFFD63649);
+  static const kTextPrimaryColor = Color(0xFF1A3F49);
+  static const kSecondaryTextColor = Color(0xFF657381);
+  static const kRatingColor = Colors.green;
+  static const kAppBackgroundColor = Colors.white;
+  static const kActionButtonColor = Colors.orange;
+  static const kSplashBackgroundColor = Color(0xFFD94758);
 }

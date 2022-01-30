@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:milkman_assessment/providers/cart_provider.dart';
-import 'package:milkman_assessment/restaurant_listing_screen.dart';
+import 'package:milkman_assessment/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -9,6 +9,6 @@ void main() {
     child: MaterialApp(
         theme: ThemeData(fontFamily: 'Sen'),
         debugShowCheckedModeBanner: false,
-        home: RestaurantListingScreen()),
+        home: SplashScreen()),
   ));
 }

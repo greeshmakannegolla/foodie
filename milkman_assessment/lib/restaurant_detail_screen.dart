@@ -36,12 +36,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         },
         child: SafeArea(
             child: Scaffold(
-          backgroundColor: ColorConstants.appBackgroundColor,
+          backgroundColor: ColorConstants.kAppBackgroundColor,
           appBar: AppBar(
             elevation: 0,
             flexibleSpace: Container(
               decoration: BoxDecoration(
-                color: ColorConstants.appBackgroundColor,
+                color: ColorConstants.kAppBackgroundColor,
               ),
             ),
             leading: InkWell(
@@ -52,7 +52,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Icon(
                   Icons.arrow_back_ios_rounded,
-                  color: ColorConstants.textPrimaryColor,
+                  color: ColorConstants.kTextPrimaryColor,
                 ),
               ),
             ),
@@ -60,14 +60,14 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
               IconButton(
                 icon: const Icon(
                   Icons.favorite_border_rounded,
-                  color: ColorConstants.textPrimaryColor,
+                  color: ColorConstants.kTextPrimaryColor,
                 ),
                 onPressed: () {},
               ),
               IconButton(
                 icon: const Icon(
                   Icons.ios_share_rounded,
-                  color: ColorConstants.textPrimaryColor,
+                  color: ColorConstants.kTextPrimaryColor,
                 ),
                 onPressed: () {},
               ),
@@ -91,7 +91,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(8)),
                               child: Container(
-                                color: ColorConstants.ratingColor,
+                                color: ColorConstants.kRatingColor,
                                 height: 35,
                                 width: 55,
                                 child: Padding(
@@ -104,7 +104,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                                           fontWeight: FontWeight.w600,
                                           fontSize: 16,
                                           color: ColorConstants
-                                              .appBackgroundColor),
+                                              .kAppBackgroundColor),
                                     ),
                                     SizedBox(
                                       width: 2,
@@ -112,7 +112,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                                     Icon(
                                       Icons.star_rounded,
                                       size: 12,
-                                      color: ColorConstants.appBackgroundColor,
+                                      color: ColorConstants.kAppBackgroundColor,
                                     )
                                   ]),
                                 ),
@@ -125,20 +125,20 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                         ),
                         Text(_restaurantData.cuisine,
                             style: kSecondaryHeader.copyWith(
-                                color: ColorConstants.textPrimaryColor
+                                color: ColorConstants.kTextPrimaryColor
                                     .withOpacity(0.9))),
                         SizedBox(
                           height: 7,
                         ),
                         Text(_restaurantData.address,
                             style: kSecondaryHeader.copyWith(
-                                color: ColorConstants.secondaryTextColor
+                                color: ColorConstants.kSecondaryTextColor
                                     .withOpacity(0.8))),
                         SizedBox(
                           height: 18,
                         ),
                         Divider(
-                          color: ColorConstants.secondaryTextColor
+                          color: ColorConstants.kSecondaryTextColor
                               .withOpacity(0.3),
                           thickness: 0.5,
                         ),
@@ -190,20 +190,20 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                 children: [
                   Icon(
                     Icons.shopping_cart_rounded,
-                    color: ColorConstants.appBackgroundColor,
+                    color: ColorConstants.kAppBackgroundColor,
                   ),
                   Text(
                     "Proceed with"
                     " ${context.watch<CartProvider>().getCart.getCartTotalQuantity()}"
                     " items",
                     style: kHeader.copyWith(
-                        color: ColorConstants.appBackgroundColor,
+                        color: ColorConstants.kAppBackgroundColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w400),
                   ),
                   Icon(
                     Icons.chevron_right_rounded,
-                    color: ColorConstants.appBackgroundColor,
+                    color: ColorConstants.kAppBackgroundColor,
                   ),
                 ],
               ),
