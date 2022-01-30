@@ -6,10 +6,8 @@ List<RestaurantMock> searchRestaurant(
   text = text.toLowerCase().replaceAll(' ', '');
   for (var restaurant in restaurantList) {
     var _restaurantName = restaurant.name.toLowerCase().replaceAll(' ', '');
-    var _restaurantCuisine =
-        restaurant.cuisine.toLowerCase().replaceAll(' ', '');
 
-    if (_restaurantName.contains(text) || _restaurantCuisine.contains(text)) {
+    if (_restaurantName.contains(text)) {
       filteredList.add(restaurant);
     }
   }

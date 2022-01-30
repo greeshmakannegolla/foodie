@@ -75,88 +75,99 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(_restaurantData.name,
-                          style: kHeader.copyWith(fontSize: 25)),
-                      ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8)),
-                        child: Container(
-                          color: ColorConstants.ratingColor,
-                          height: 35,
-                          width: 55,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0, vertical: 3),
-                            child: Row(children: [
-                              Text(
-                                _restaurantData.rating.toString(),
-                                style: kSecondaryHeader.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16,
-                                    color: ColorConstants.appBackgroundColor),
+            child: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(_restaurantData.name,
+                                style: kHeader.copyWith(fontSize: 25)),
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                              child: Container(
+                                color: ColorConstants.ratingColor,
+                                height: 35,
+                                width: 55,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0, vertical: 3),
+                                  child: Row(children: [
+                                    Text(
+                                      _restaurantData.rating.toString(),
+                                      style: kSecondaryHeader.copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16,
+                                          color: ColorConstants
+                                              .appBackgroundColor),
+                                    ),
+                                    SizedBox(
+                                      width: 2,
+                                    ),
+                                    Icon(
+                                      Icons.star_rounded,
+                                      size: 12,
+                                      color: ColorConstants.appBackgroundColor,
+                                    )
+                                  ]),
+                                ),
                               ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              Icon(
-                                Icons.star_rounded,
-                                size: 12,
-                                color: ColorConstants.appBackgroundColor,
-                              )
-                            ]),
-                          ),
+                            )
+                          ],
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(_restaurantData.cuisine,
-                      style: kSecondaryHeader.copyWith(
-                          color: ColorConstants.textPrimaryColor
-                              .withOpacity(0.9))),
-                  SizedBox(
-                    height: 7,
-                  ),
-                  Text(_restaurantData.address,
-                      style: kSecondaryHeader.copyWith(
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(_restaurantData.cuisine,
+                            style: kSecondaryHeader.copyWith(
+                                color: ColorConstants.textPrimaryColor
+                                    .withOpacity(0.9))),
+                        SizedBox(
+                          height: 7,
+                        ),
+                        Text(_restaurantData.address,
+                            style: kSecondaryHeader.copyWith(
+                                color: ColorConstants.secondaryTextColor
+                                    .withOpacity(0.8))),
+                        SizedBox(
+                          height: 18,
+                        ),
+                        Divider(
                           color: ColorConstants.secondaryTextColor
-                              .withOpacity(0.8))),
-                  SizedBox(
-                    height: 18,
-                  ),
-                  Divider(
-                    color: ColorConstants.secondaryTextColor.withOpacity(0.3),
-                    thickness: 0.5,
-                  ),
-                  SizedBox(
-                    height: 18,
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemCount: _restaurantData.items.length,
-                    itemBuilder: (BuildContext ctx, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 12),
-                        child: ItemCard(
-                          _restaurantData.items[index],
-                          key: UniqueKey(),
+                              .withOpacity(0.3),
+                          thickness: 0.5,
                         ),
-                      );
-                    },
-                  )
-                ],
-              ),
+                        SizedBox(
+                          height: 18,
+                        ),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: ClampingScrollPhysics(),
+                          itemCount: _restaurantData.items.length,
+                          itemBuilder: (BuildContext ctx, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 12),
+                              child: ItemCard(
+                                _restaurantData.items[index],
+                                key: UniqueKey(),
+                              ),
+                            );
+                          },
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 70,
+                )
+              ],
             ),
           ),
           floatingActionButton: TextButton(

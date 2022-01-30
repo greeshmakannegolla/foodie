@@ -24,11 +24,13 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
 
   final TextEditingController _searchController = TextEditingController();
 
+  bool _maxSafety = false;
+  bool _ratingFilter = false;
+
   @override
   void initState() {
     super.initState();
     _restaurantList = getRestaurantList();
-    _filteredRestaurantList.clear();
     _filteredRestaurantList.addAll(_restaurantList);
   }
 
@@ -73,14 +75,7 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                           controller: _searchController,
                           cursorColor: ColorConstants.appPrimaryColor,
                           onChanged: (newText) {
-                            _filteredRestaurantList.clear();
-                            _filteredRestaurantList.addAll(_restaurantList);
-                            if (_searchController.text.isNotEmpty) {
-                              _filteredRestaurantList = searchRestaurant(
-                                  _searchController.text,
-                                  _filteredRestaurantList);
-                            }
-                            setState(() {});
+                            _applyFilters();
                           },
                           decoration: InputDecoration(
                               fillColor: Colors.black.withOpacity(0.05),
@@ -131,7 +126,9 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
                                     );
                                   },
                                   child: RestaurantCard(
-                                      _filteredRestaurantList[index])),
+                                    _filteredRestaurantList[index],
+                                    key: UniqueKey(),
+                                  )),
                             );
                           },
                         ),
@@ -143,19 +140,63 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
       ),
     );
   }
-}
 
-Widget _buildChip(String label) {
-  return Chip(
-    label: Text(
-      label,
-      style: TextStyle(
-        color: ColorConstants.textPrimaryColor,
+  void _applyFilters() {
+    _filteredRestaurantList.clear();
+    _filteredRestaurantList.addAll(_restaurantList);
+
+    if (_searchController.text.isNotEmpty) {
+      _filteredRestaurantList.clear();
+      _filteredRestaurantList +=
+          searchRestaurant(_searchController.text, _restaurantList);
+    }
+
+    if (_maxSafety) {
+      var temp = _filteredRestaurantList.where((element) {
+        return element.maxSafety;
+      }).toList();
+
+      _filteredRestaurantList.clear();
+      _filteredRestaurantList += temp;
+    }
+
+    if (_ratingFilter) {
+      var temp = _filteredRestaurantList.where((element) {
+        return element.rating >= 4;
+      }).toList();
+      _filteredRestaurantList.clear();
+      _filteredRestaurantList += temp;
+    }
+
+    setState(() {});
+  }
+
+  Widget _buildChip(String label) {
+    return InkWell(
+      onTap: () {
+        if (label == maxSafety) {
+          _maxSafety = !_maxSafety;
+        }
+        if (label == ratingFilter) {
+          _ratingFilter = !_ratingFilter;
+        }
+        _applyFilters();
+      },
+      child: Chip(
+        label: Text(
+          label,
+          style: TextStyle(
+            color: ColorConstants.textPrimaryColor,
+          ),
+        ),
+        backgroundColor: (label == maxSafety && _maxSafety) ||
+                (label == ratingFilter && _ratingFilter)
+            ? ColorConstants.appPrimaryColor
+            : ColorConstants.appBackgroundColor,
+        elevation: 1,
+        shadowColor: Colors.grey[60],
+        padding: EdgeInsets.all(8.0),
       ),
-    ),
-    backgroundColor: ColorConstants.appBackgroundColor,
-    elevation: 1,
-    shadowColor: Colors.grey[60],
-    padding: EdgeInsets.all(8.0),
-  );
+    );
+  }
 }
