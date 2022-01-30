@@ -38,7 +38,13 @@ class _RestaurantListingScreenState extends State<RestaurantListingScreen> {
         child: Scaffold(
           appBar: AppBar(
             elevation: 0,
-            title: Text("Hey there,"),
+            title: Row(
+              children: const [
+                Icon(Icons.home_rounded),
+                SizedBox(width: 5),
+                Text("Home"),
+              ],
+            ),
             flexibleSpace: Container(
               decoration: BoxDecoration(
                 color: ColorConstants.appPrimaryColor,
