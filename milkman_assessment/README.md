@@ -1,16 +1,20 @@
-# milkman_assessment
+Functionality implemented:
 
-A new Flutter project.
+- Restaurant Listing screen: 
+  - Includes a search to look for restaurant(s)
+  - Filter based upon "MAX Safety" and "Rating: 4+"
+  - Restaurant cards
 
-## Getting Started
+- Restaurant Detail screen:
+ - Basic restaurant information
+ - Menu items with veg/non-veg indicator icon, price, description and ability to add the item(s) to  cart
 
-This project is a starting point for a Flutter application.
+- Checkout screen
+ - Information about items in the cart and ability to modify the same
+ - Ability to add/remove a promo code
 
-A few resources to get you started if this is your first Flutter project:
+- All the data required in the app is fetched from a mock API.  
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- White labeling has been achieved 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Differences that can be spotted between the two apps are, different appIcon/logo, primary color in the app, splash screen and display name in the AppBar in Restaurant Listing screen.
